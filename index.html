@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JOTAMAIA | Página principal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+  <aside class="sidebar">
+    <a class="brand" href="index.html">
+      <span class="brand-icon"><i class="bx bx-desktop"></i></span>
+      <span><strong>JOTAMAIA</strong><small>Sistema de gestão</small></span>
+    </a>
+    <nav class="navigation">
+      <a class="nav-link active" href="index.html"><i class="bx bx-home-alt"></i> Página principal</a>
+      <a class="nav-link" href="funcionarios.html"><i class="bx bx-group"></i> Funcionários</a>
+    </nav>
+    <div class="sidebar-footer">Sistema interno JOTAMAIA</div>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-top">
+      <div>
+        <p class="eyebrow">BEM-VINDO(A)</p>
+        <h1>Página principal</h1>
+        <p class="muted">Acesse as opções disponíveis no sistema.</p>
+      </div>
+    </header>
+
+    <section class="welcome-panel">
+      <div class="welcome-copy">
+        <span class="welcome-label">JOTAMAIA</span>
+        <h2>Organização simples para o dia a dia.</h2>
+        <p>Gerencie suas informações em um só lugar e acesse rapidamente os recursos disponíveis.</p>
+        <a class="button button-primary" href="funcionarios.html"><i class="bx bx-group"></i> Acessar funcionários</a>
+      </div>
+      <div class="welcome-art" aria-hidden="true"><i class="bx bx-desktop"></i></div>
+    </section>
+
+    <section class="summary-grid" aria-label="Resumo do sistema">
+      <article class="summary-card">
+        <span class="summary-icon"><i class="bx bx-group"></i></span>
+        <div>
+          <p class="summary-label">Funcionários cadastrados</p>
+          <strong class="summary-number" id="employeeCount">0</strong>
+          <p class="summary-note">Total salvo neste navegador</p>
+        </div>
+      </article>
+      <article class="summary-card">
+        <span class="summary-icon"><i class="bx bx-check-circle"></i></span>
+        <div>
+          <p class="summary-label">Status do sistema</p>
+          <strong class="summary-status">Disponível</strong>
+          <p class="summary-note">Cadastro local pronto para uso</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section-heading">
+      <div>
+        <h2>Acesso rápido</h2>
+        <p class="muted">Os módulos podem ser ampliados conforme o projeto crescer.</p>
+      </div>
+    </section>
+    <a class="module-card" href="funcionarios.html">
+      <span class="module-icon"><i class="bx bx-group"></i></span>
+      <span class="module-text"><strong>Cadastro de funcionários</strong><small>Adicionar, editar e excluir funcionários cadastrados.</small></span>
+      <i class="bx bx-chevron-right module-arrow"></i>
+    </a>
+  </main>
+
+  <script>
+    // O cadastro atual usa a mesma chave localStorage: dbfunc.
+    // Assim, o contador acompanha os registros feitos na página Funcionários.
+    try {
+      const funcionarios = JSON.parse(localStorage.getItem('dbfunc')) || [];
+      document.getElementById('employeeCount').textContent =
+        Array.isArray(funcionarios) ? funcionarios.length : 0;
+    } catch (error) {
+      document.getElementById('employeeCount').textContent = '0';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JOTAMAIA | Cadastro de funcionários</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+  <aside class="sidebar">
+    <a class="brand" href="index.html">
+      <span class="brand-icon"><i class="bx bx-desktop"></i></span>
+      <span><strong>JOTAMAIA</strong><small>Sistema de gestão</small></span>
+    </a>
+    <nav class="navigation">
+      <a class="nav-link" href="index.html"><i class="bx bx-home-alt"></i> Página principal</a>
+      <a class="nav-link active" href="funcionarios.html"><i class="bx bx-group"></i> Funcionários</a>
+    </nav>
+    <div class="sidebar-footer">Sistema interno JOTAMAIA</div>
+  </aside>
+
+  <main class="main-content">
+    <header class="page-top">
+      <div>
+        <p class="eyebrow">GESTÃO DE PESSOAS</p>
+        <h1>Cadastro de funcionários</h1>
+        <p class="muted">Gerencie os dados dos funcionários da empresa.</p>
+      </div>
+      <button type="button" class="button button-primary" id="new" onclick="openModal()"><i class="bx bx-plus"></i> Adicionar</button>
+    </header>
+
+    <section class="table-card">
+      <div class="table-toolbar">
+        <div><h2>Funcionários cadastrados</h2><p class="muted">Os registros ficam salvos neste navegador.</p></div>
+      </div>
+      <div class="divTable">
+        <table>
+          <thead>
+            <tr><th>Nome</th><th>Função</th><th>Salário</th><th class="acao">Editar</th><th class="acao">Excluir</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="empty-state" id="emptyState">Nenhum funcionário cadastrado ainda.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <form id="employeeForm">
+        <div class="modal-heading">
+          <div><p class="eyebrow">JOTAMAIA</p><h2 id="modalTitle">Dados do funcionário</h2></div>
+          <button type="button" class="close-modal" aria-label="Fechar" onclick="closeModal()"><i class="bx bx-x"></i></button>
+        </div>
+        <label for="modal-nome">Nome</label>
+        <input type="text" id="modal-nome" placeholder="Nome completo" required>
+        <label for="modal-funcao">Função</label>
+        <input type="text" id="modal-funcao" placeholder="Cargo ou função" required>
+        <label for="modal-salario">Salário (R$)</label>
+        <input type="number" id="modal-salario" min="0" step="0.01" placeholder="0,00" required>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" onclick="closeModal()">Cancelar</button>
+          <button type="submit" class="button button-primary" id="btnSave">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-container confirm-container" id="confirmDeleteModal" role="dialog" aria-modal="true" aria-labelledby="confirmDeleteTitle">
+    <div class="modal confirm-modal">
+      <div class="modal-heading">
+        <div>
+          <p class="eyebrow">CONFIRMAÇÃO</p>
+          <h2 id="confirmDeleteTitle">Excluir funcionário?</h2>
+        </div>
+        <button type="button" class="close-modal" aria-label="Fechar" id="closeDeleteModal"><i class="bx bx-x"></i></button>
+      </div>
+      <p class="confirm-message" id="confirmDeleteMessage">Tem certeza de que deseja excluir este funcionário?</p>
+      <div class="modal-actions">
+        <button type="button" class="button button-secondary" id="cancelDelete">Cancelar</button>
+        <button type="button" class="button button-danger" id="confirmDelete">Confirmar exclusão</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
